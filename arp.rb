@@ -2,13 +2,18 @@
 
 require 'socket'
 
-network = ARGV[0]
+
+#interface = ARGV[0] #future implementation
+
+ip = UDPSocket.open {|s| s.connect("64.233.187.99", 1); s.addr.last}
+
+my_ip = ip.rpartition(".")[0]
 
 s=UDPSocket.new
 
 254.times do |i|
   next if i==0
-  s.send("test", 0, "#{network}."+ i.to_s, 53)
+  s.send("test", 0, "#{my_ip}.#{i}", 53)
 end
 
 f=File.open("/proc/net/arp",'r')
