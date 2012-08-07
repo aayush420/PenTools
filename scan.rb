@@ -2,6 +2,7 @@
 # gem install ruby-nmap
 
 require 'nmap/program'
+require 'nmap/xml'
 
 NETWORK = ARGV[0]
 CLASS = ARGV[1]
@@ -25,4 +26,16 @@ else
  print "Examples:\n"
  print "Use sudo scan.rb 192.168.1.0 24\n"
  print "Use sudo scan.rb 192.168.0.0 16\n"
+end
+
+# going to parse what i just scanned
+
+Nmap::XML.new("#{NETWORK}.xml") do |xml|
+  xml.each_host do |host|
+    puts "[#{host.ip}]"
+
+    host.each_port do |port|
+      puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
+    end
+  end
 end
