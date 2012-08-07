@@ -4,8 +4,10 @@
 require 'nmap/program'
 
 NETWORK = ARGV[0]
+CLASS = ARGV[1]
 
-Nmap::Program.scan do |nmap|
+unless CLASS.nil? || NETWORK.nil?
+  Nmap::Program.scan do |nmap|
     print "Scanning #{NETWORK}..."
     #nmap.sudo = true
 
@@ -16,6 +18,11 @@ Nmap::Program.scan do |nmap|
     nmap.verbose = true
 
     nmap.ports = [20,21,22,23,25,80,110,443,512,522,8080,8081,1080]
-    nmap.targets = "#{NETWORK}"
+    nmap.targets = "#{NETWORK}/#{CLASS}"
+  end
+else
+ print "Run scan with sudo or as root"
+ print "Examples:\n"
+ print "Use sudo scan.rb 192.168.1.0 24\n"
+ print "Use sudo scan.rb 192.168.0.0 16\n"
 end
-
