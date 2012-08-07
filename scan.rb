@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-
+# gem install ruby-nmap
 
 require 'nmap/program'
 
