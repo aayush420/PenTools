@@ -30,10 +30,15 @@ end
 
 # going to parse what i just scanned
 
+puts
+puts
+print "GLOBAL RESUME of #{NETWORK} ... ! MEOW\n"
+
 Nmap::XML.new("#{NETWORK}.xml") do |xml|
   xml.each_host do |host|
+    puts "[#{host.hostnames}]"
     puts "[#{host.ip}]"
-
+    puts "[#{host.os}]"
     host.each_port do |port|
       puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
     end
