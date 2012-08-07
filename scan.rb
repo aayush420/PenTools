@@ -35,7 +35,8 @@ puts
 print "GLOBAL RESUME of #{NETWORK} ... ! MEOW\n"
 
 Nmap::XML.new("#{NETWORK}.xml") do |xml|
-  xml.each_host do |host|
+  xml.each_up_host do |host|
+    #next if host == NULL
     puts "[#{host.hostnames}]"
     puts "[#{host.ip}]"
     puts "[#{host.os}]"
