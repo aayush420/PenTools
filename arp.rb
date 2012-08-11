@@ -13,7 +13,7 @@ s=UDPSocket.new
 
 254.times do |i|
   next if i==0
-  s.send("test", 0, "#{my_ip}.#{i}", 53)
+  s.send("meow", 0, "#{my_ip}.#{i}", 53)
 end
 
 f=File.open("/proc/net/arp",'r')
