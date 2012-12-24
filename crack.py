@@ -26,9 +26,8 @@ def main():
     if ":" in line:
       user = line.split(':')[0]
       cryptPass = line.split(':')[1].strip(' ')
-      prep = cryptPass.split('$6$')[1]
-      salt = prep.split('$')[0]
-      passwd = prep.split('$')[1]
+      salt = cryptPass.split('$')[-2]
+      passwd = cryptPass.split('$')[-1]
       print "[*] Cracking Password For: "+user
       testPass(salt, passwd)
 if __name__ == "__main__":
