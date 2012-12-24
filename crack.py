@@ -20,6 +20,7 @@ def testPass(salt, cryptPass):
 
 def main():
   passFile = open('/home/rek2/shadow')
+
   for line in passFile.readlines():
     if ":" in line:
       user = line.split(':')[0]
@@ -28,5 +29,6 @@ def main():
       passwd = cryptPass.split('$')[-1]
       print "[*] Cracking Password For: "+user
       testPass(salt, passwd)
+
 if __name__ == "__main__":
   main()
