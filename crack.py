@@ -3,8 +3,6 @@
 # sha512 hashing with salt, this may not be usefull when cracking in the real world
 # but can be usefull if you dont have your tools with you and you just have python.
  
-
-import base64
 import crypt
 
 def testPass(salt, cryptPass):
