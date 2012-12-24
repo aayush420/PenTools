@@ -7,7 +7,7 @@ import crypt
 
 def testPass(salt, cryptPass):
   dictFile = open('/home/rek2/dictionary.txt','r')
-  
+
   for word in dictFile.readlines():
     word = word.strip('\n')
     output = crypt.crypt(word, '$6$%s$' % salt)
@@ -15,8 +15,6 @@ def testPass(salt, cryptPass):
     if (dicPasswd == cryptPass):
       print "[+] Password Found: "+word+"\n"
       return
-    print "[+] Password Not Found.\n"
-    return
 
 def main():
   passFile = open('/home/rek2/shadow')
