@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import httplib, sys
+import http.client, sys
 from optparse import OptionParser
 
 usageString = "Usage: %prog [options] hostname"
@@ -15,13 +15,13 @@ if len(args) < 1:
 host = args[0]
 port = args[1]
 
-client = httplib.HTTPConnection(host,port)
+client = http.client.HTTPConnection(host,port)
 client.request("GET","/")
 resp = client.getresponse()
 client.close()
 
 if resp.status == 200:
-  print host + " : OK"
+  print(host + " : OK")
   sys.exit()
 
-print host + " : DOWN! (" + resp.status + " ," + resp.reason + ")"
+print(host + " : DOWN! (" + resp.status + " ," + resp.reason + ")")
