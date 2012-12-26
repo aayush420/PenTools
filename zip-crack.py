@@ -1,22 +1,21 @@
 #!/usr/bin/env python
 import zipfile
+from threading import Thread
 
 def extractFile(zFile, password):
   try:
     zFile.extractall(pwd=password)
-    return password
+    print '[+] Password = ' + password + '\n'
   except:
-    return
+    pass
 
 def main():
   zFile = zipfile.ZipFile("evil.zip")
   passFile = open('/home/rek2/dictionary.txt')
   for line in passFile.readlines():
     password = line.strip('\n')
-    guess = extractFile(zFile, password)
-    if guess:
-      print '[+] Password = ' + password + '\n'
-      exit(0)
+    t = Thread(target=extractFile, args=(zFile, password))
+    t.start()
 
 if __name__ == '__main__':
   main()
