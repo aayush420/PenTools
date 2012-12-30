@@ -5,7 +5,7 @@ def nmapScan(tgtHost, tgtPort):
     nmScan = nmap.PortScanner()
     nmScan.scan(tgtHost, tgtPort)
     state = nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
-    print "[*] " + tgtHost + " tcp/"+tgtPort +" "+state
+    print("[*] " + tgtHost + " tcp/"+tgtPort +" "+state)
 
 
 def main():
