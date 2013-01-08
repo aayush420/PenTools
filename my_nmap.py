@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import nmap
+import socket
 import optparse
 
 def nmapScan(tgtHost, tgtPort):
@@ -20,6 +21,8 @@ def main():
     if (tgtHost == None) | (tgtPorts == None):
         print(parser.usage)
         exit(0)
+    if socket.gethostbyname(tgtHost) != tgtHost:
+        tgtHost = socket.gethostbyname(tgtHost)
     for tgtPort in tgtPorts:
         nmapScan(tgtHost, tgtPort)
 
