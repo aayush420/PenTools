@@ -13,7 +13,7 @@ def testPass(salt, cryptPass):
     output = crypt.crypt(word, '$6$%s$' % salt)
     dicPasswd = output.split('$')[-1]
     if (dicPasswd == cryptPass):
-      print "[+] Password Found: "+word+"\n"
+      print("[+] Password Found: "+word+"\n")
       return
 
 def main():
@@ -25,7 +25,7 @@ def main():
       cryptPass = line.split(':')[1].strip(' ')
       salt = cryptPass.split('$')[-2]
       passwd = cryptPass.split('$')[-1]
-      print "[*] Cracking Password For: "+user
+      print("[*] Cracking Password For: "+user)
       testPass(salt, passwd)
 
 if __name__ == "__main__":
