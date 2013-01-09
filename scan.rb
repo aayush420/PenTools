@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 # gem install ruby-nmap
+# run with sudo or as root!
 
 require 'nmap/program'
 require 'nmap/xml'
@@ -26,6 +27,7 @@ else
  print "Examples:\n"
  print "Use sudo scan.rb 192.168.1.0 24\n"
  print "Use sudo scan.rb 192.168.0.0 16\n"
+ exit
 end
 
 # going to parse what i just scanned
