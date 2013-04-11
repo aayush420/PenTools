@@ -33,7 +33,7 @@ def s3get(url)
     http = Net::HTTP.new(target.host, target.port) 
     res = http.head("/")
     if res.code ==  "200"
-      print "#{res.code} :  #{target} <-------- OPEN\n"
+      print "#{res.code} :  #{target} <-------- PUBLIC\n"
     end
   else
     p "Error parsing url #{target}"
